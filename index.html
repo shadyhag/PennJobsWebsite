@@ -2,12 +2,18 @@
 <html>
 <head>
 
+  <meta name="viewport" content="initial-scale=1.0, user-scalable=no" />
+  <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
 
+  <link rel="shortcut icon" href="http://cartodb.com/assets/favicon.ico" />
   <!-- CSS Imports -->
   <link rel="stylesheet" href="css/reset.css" />
   <link rel="stylesheet" href="css/leaflet.css" />
   <link rel="stylesheet" href="css/main.css" />
   <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+  <link rel="stylesheet" href="http://libs.cartocdn.com/cartodb.js/v3/3.15/themes/css/cartodb.css" type="text/css" />
+
+
 
   <!-- =====================
   Edit css/main.css
@@ -36,51 +42,51 @@
           for jobs related to their interests more involved than it needs to be. Navigate to the dropdowns below and filter out opportunities based on Location, Concentration, and/or Experience
         </p>
         <div>
-          <div class="dropdown">
+          <div id="sql" class="dropdown">
             <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Concentration
               <span class="caret"></span></button>
               <ul class="dropdown-menu scrollable-menu" role = "menu">
-                <li><a href="#">All</a></li>
-                <li><a href="#">Architecture</a></li>
-                <li><a href="#">City Planning</a></li>
-                <li><a href="#">Community/Economic Development</a></li>
-                <li><a href="#">Energy</a></li>
-                <li><a href="#">GIS/Data/Technology</a></li>
-                <li><a href="#">Historic Preservation</a></li>
-                <li><a href="#">Housing</a></li>
-                <li><a href="#">Landscape Architecture</a></li>
-                <li><a href="#">Land Use/Environmental Planning</a></li>
-                <li><a href="#">Real Estate/Property Development</a></li>
-                <li><a href="#">Transportation</a></li>
-                <li><a href="#">Urban Design</a></li>
-                <li><a href="#">Other</a></li>
+                <li data=" WHERE " data-type="sql">All</a></li>
+                <li data=" WHERE = 'Architecture'" data-type="sql">Architecture</a></li>
+                <li data=" WHERE " data-type="sql">City Planning</a></li>
+                <li data=" WHERE " data-type="sql">Community/Economic Development</a></li>
+                <li data=" WHERE " data-type="sql">Energy</a></li>
+                <li data=" WHERE " data-type="sql">GIS/Data/Technology</a></li>
+                <li data=" WHERE " data-type="sql">Historic Preservation</a></li>
+                <li data=" WHERE " data-type="sql">Housing</a></li>
+                <li data=" WHERE " data-type="sql">Landscape Architecture</a></li>
+                <li data=" WHERE " data-type="sql">Land Use/Environmental Planning</a></li>
+                <li data=" WHERE " data-type="sql">Real Estate/Property Development</a></li>
+                <li data=" WHERE " data-type="sql">Transportation</a></li>
+                <li data=" WHERE " data-type="sql">Urban Design</a></li>
+                <li data=" WHERE " data-type="sql">Other</a></li>
               </ul>
             </div>
-
-            <div class="dropdown">
+<!-- <li data=" WHERE mag >= 5.0" data-type="sql"> -->
+            <div id="sql" class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Job Type
                 <span class="caret"></span></button>
                 <ul class="dropdown-menu scrollable-menu" role = "menu">
-                  <li><a href="#">All</a></li>
-                  <li><a href="#">Internship</a></li>
-                  <li><a href="#">Full-time</a></li>
-                  <li><a href="#">Part-time</a></li>
-                  <li><a href="#">Temporary</a></li>
-                  <li><a href="#">Contract</a></li>
+                  <li data=" WHERE " data-type="sql">All</a></li>
+                  <li data=" WHERE " data-type="sql">Internship</a></li>
+                  <li data=" WHERE " data-type="sql">Full-time</a></li>
+                  <li data=" WHERE " data-type="sql">Part-time</a></li>
+                  <li data=" WHERE " data-type="sql">Temporary</a></li>
+                  <li data=" WHERE " data-type="sql">Contract</a></li>
                 </ul>
               </div>
 
-              <div class="dropdown">
+              <div id="sql" class="dropdown">
                 <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">Salary
                   <span class="caret"></span></button>
                   <ul class="dropdown-menu scrollable-menu1" role = "menu1">
-                    <li><a href="#">All</a></li>
-                    <li><a href="#">$35,000+</a></li>
-                    <li><a href="#">$55,000+</a></li>
-                    <li><a href="#">$65,000+</a></li>
-                    <li><a href="#">$75,000+</a></li>
-                    <li><a href="#">$85,000+</a></li>
-                    <li><a href="#">$95,000+</a></li>
+                    <li data=" WHERE " data-type="sql">All</a></li>
+                    <li data=" WHERE " data-type="sql">$35,000+</a></li>
+                    <li data=" WHERE " data-type="sql">$55,000+</a></li>
+                    <li data=" WHERE " data-type="sql">$65,000+</a></li>
+                    <li data=" WHERE " data-type="sql">$75,000+</a></li>
+                    <li data=" WHERE " data-type="sql">$85,000+</a></li>
+                    <li data=" WHERE " data-type="sql">$95,000+</a></li>
                   </ul>
                 </div>
               </div>
@@ -96,7 +102,7 @@
                 <label><input type="checkbox" value="">Closed</label>
               </div>
 
-              <!-- <div class="cartodb-popup v2">
+              <div id= "dialog" class="cartodb-popup v2">
                 <a href="#close" class="cartodb-popup-close-button close">x</a>
                 <div class="cartodb-popup-content-wrapper">
                   <div class="cartodb-popup-content">
@@ -111,7 +117,7 @@
                   </div>
                 </div>
                 <div class="cartodb-popup-tip-container"></div>
-              </div> -->
+              </div>
 
               <!-- <div id="controls">
               <input class = "button btn btn default" type="button" onclick="startEdits()" value="Click to Start Editing">
@@ -134,14 +140,11 @@
 
 
       <!-- Javascript Imports -->
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
       <script src="js/leaflet.js"></script>
       <script src="js/jquery-2.2.0.js"></script>
       <script src="js/underscore.js"></script>
-      <script src="js/leaflet.js"></script>
       <script src="js/main.js"></script>
-      <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
-      
+      <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
       <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
     </body>
     </html>

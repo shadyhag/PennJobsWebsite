@@ -107,65 +107,6 @@ body{
   display:inline-block;
 }
 
-.legendbox{
-  width:10px;
-  height:10px;
-  display:inline-block;
-}
-
-.one{
-  background-color:#FD8D3C
-}
-
-.twenty3{
-  background-color:#FC4E2A
-}
-
-.sixty4{
-  background-color:#E31A1C
-}
-
-.one22{
-  background-color:#BD0026
-}
-
-.two48{
-  background-color:#800026
-}
-
-.bikeax{
-  background-color:orange
-}
-
-.st{
-  background-color:black
-}
-
-.Buff{
-  background:orange
-}
-
-.BuffC{
-  background-color:green
-}
-
-.Sharrow{
-  background-color:yellow
-}
-
-.Conv{
-  background-color:red
-}
-
-.ConSh{
-  background-color:blue
-}
-
-.Cont{
-  background-color:purple
-}
-
-
 
 .previous{
   float:left;
@@ -192,8 +133,6 @@ body{
   font-weight:bold;
   font-size: 20px;
 }
-
-
 
 
 .main{
