@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+
+  <!-- CSS Imports -->
+  <link rel="stylesheet" href="css/reset.css" />
+  <link rel="stylesheet" href="css/leaflet.css" />
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
+
+  <!-- =====================
+  Edit css/main.css
+
+  ====================== -->
+
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <div class="top">
+
+      <!-- =====================
+      SLIDE 1
+
+      ====================== -->
+
+      <div id= "content1">
+
+        <h1 class="title"> PennJobs </h1>
+        <div>
+          <h2 class="subtitle">Opportunities</h2>
+        </div>
+        <p class="main">PennDesign students receive employment opportunities by e-mail. Often times they get lost between e-mails from classmates and professors, which makes searching
+          for jobs related to their interests more involved than it needs to be. Navigate to the dropdowns below and filter out opportunities based on Location, Concentration, and/or Experience
+        </p>
+        <div>
+          <div class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Concentration
+              <span class="caret"></span></button>
+              <ul class="dropdown-menu scrollable-menu" role = "menu">
+                <li><a href="#">All</a></li>
+                <li><a href="#">Architecture</a></li>
+                <li><a href="#">City Planning</a></li>
+                <li><a href="#">Community/Economic Development</a></li>
+                <li><a href="#">Energy</a></li>
+                <li><a href="#">GIS/Data/Technology</a></li>
+                <li><a href="#">Historic Preservation</a></li>
+                <li><a href="#">Housing</a></li>
+                <li><a href="#">Landscape Architecture</a></li>
+                <li><a href="#">Land Use/Environmental Planning</a></li>
+                <li><a href="#">Real Estate/Property Development</a></li>
+                <li><a href="#">Transportation</a></li>
+                <li><a href="#">Urban Design</a></li>
+                <li><a href="#">Other</a></li>
+              </ul>
+            </div>
+
+            <div class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Job Type
+                <span class="caret"></span></button>
+                <ul class="dropdown-menu scrollable-menu" role = "menu">
+                  <li><a href="#">All</a></li>
+                  <li><a href="#">Internship</a></li>
+                  <li><a href="#">Full-time</a></li>
+                  <li><a href="#">Part-time</a></li>
+                  <li><a href="#">Temporary</a></li>
+                  <li><a href="#">Contract</a></li>
+                </ul>
+              </div>
+
+              <div class="dropdown">
+                <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">Salary
+                  <span class="caret"></span></button>
+                  <ul class="dropdown-menu scrollable-menu1" role = "menu1">
+                    <li><a href="#">All</a></li>
+                    <li><a href="#">$35,000+</a></li>
+                    <li><a href="#">$55,000+</a></li>
+                    <li><a href="#">$65,000+</a></li>
+                    <li><a href="#">$75,000+</a></li>
+                    <li><a href="#">$85,000+</a></li>
+                    <li><a href="#">$95,000+</a></li>
+                  </ul>
+                </div>
+              </div>
+
+              <h3 class="subtitle">Exclude (if possible):</h3>
+              <div class="checkbox">
+                <label><input type="checkbox" value="">Unpaid</label>
+                <label><input type="checkbox" value="">Part-time</label>
+                <label><input type="checkbox" value="">Full-time</label>
+                <label><input type="checkbox" value="">Internship</label>T
+                <label><input type="checkbox" value="">Entry-level</label>
+                <label><input type="checkbox" value="">Senior-level</label>
+                <label><input type="checkbox" value="">Closed</label>
+              </div>
+
+              <div id="controls">
+                <input class = "button btn btn default" type="button" onclick="startEdits()" value="Click to Start Editing">
+                <input class = "button btn btn default" type="button" onclick="stopEdits()" value="Stop Your Editing Session"><br>
+              </div>
+
+                </div>
+              </div>
+            </div>
+
+
+
+
+
+            <!-- Map -->
+
+            <div id="map" class="map"></div>
+
+
+
+
+            <!-- Javascript Imports -->
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.js"></script>
+            <script src="js/leaflet.js"></script>
+            <script src="js/jquery-2.2.0.js"></script>
+            <script src="js/underscore.js"></script>
+            <script src="js/leaflet.js"></script>
+            <script src="js/main.js"></script>
+            <script src="http://libs.cartocdn.com/cartodb.js/v3/cartodb.js"></script>
+            <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+            <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+          </body>
+          </html>
