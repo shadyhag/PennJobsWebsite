@@ -3,11 +3,25 @@ window.onload = function() {
 
 /*=====================
 
-DATA
+DATA RETRIEVAL AND SETUP
 
 ===================== */
-// var citymarkers = "https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM pennjobsdatatable20160418";
+var all = "https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM pennjobsdatatable20160418";
 
+
+cartodb.createVis(map, vizjson_url)
+  .done(function(vis, layers) {
+    // do stuff
+    alert("Layers has " + layers.length + " layers.");
+  })
+  .error(function(err) {
+    // report error
+    console.log("An error occurred: " + err);
+  });
+
+
+
+var jobs = null;
 
 
 var cartoDBUsername = "shayda";
@@ -15,21 +29,50 @@ var cartoDBUsername = "shayda";
 // Write SQL Selection Query to be Used on CartoDB Table
 // Name of table is 'data_collector'
 var sqlQuery = "SELECT * FROM pennjobsdatatable20160418";
-// Get CartoDB selection as GeoJSON and Add to Map
-function getGeoJSON(){
+var sqlQueryArchitecture = "SELECT * FROM pennjobsdatatable20160418 WHERE category LIKE 'Architecture'";
+
+
+
+
+function showAll(){
   $.getJSON("https://"+cartoDBUsername+".cartodb.com/api/v2/sql?format=GeoJSON&q="+sqlQuery, function(data) {
-    cartoDBPoints = L.geoJson(data,{
+    jobs = L.geoJson(data,{
       pointToLayer: function(feature,loc){
-        return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p>' + feature.properties.description + '<br /><em>Submitted by </em>' + feature.properties.name + '</p>');
+        return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
       },
       onEachFeature: onEachFeature
     }).addTo(map);
   });
 }
 
-$( document ).ready(function() {
-  getGeoJSON();
+
+showAll();
+
+
+// Event Listeners
+$('li[value=arch]').click(function(){
+  showArch();
 });
+
+$('li[value=all]').click(function(){
+  showAll();
+});
+
+function showArch(){
+      if(map.hasLayer(jobs)){
+        map.removeLayer(jobs);
+      }
+      $.getJSON("https://"+cartoDBUserName+".cartodb.com/api/v2/sql?format=GeoJSON&q="+sqlQueryArchitecture, function(data) {
+        jobs = L.geoJson(data,{
+          pointToLayer: function(feature,loc){
+            return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+          },
+          onEachFeature: onEachFeature
+        }).addTo(map);
+      });
+    }
+
+
 
 var tableName = "pennjobsdatatable20160418";
 
@@ -41,6 +84,17 @@ var layerSource = {
     cartocss: cityMarkerOptions
   }]
 };
+
+$('#sql .dropdown-menu a').click(function(e){
+  e.preventDefault();
+  var selection = $(this);
+  var selectedCategory = selection.attr('value');
+  var selectedSql = selection.data('sql');
+  $('#text-category').text(selectedCategory);
+  $('#text-sql').text(selectedSql);
+});
+
+
 
 
 
@@ -111,77 +165,39 @@ function onEachFeature(feature, layer) {
     mouseout: resetHighlight,
 
   });
-  if (feature.properties && feature.properties.city1 && feature.properties.miles) {
-    layer.bindPopup("From 2008 to 2013 " + feature.properties.city1+" added an average of " +feature.properties.miles + " miles of bike lanes per year");
 
-  }
 
 }
+
+
+
+
 
 
 /*=====================
 LAYER STUFF
 ===================== */
-var addLayer= function(url, options){
-  $.ajax(url).done(function(data){
-    console.log(url, data);
-    var geoJson = L.geoJson(data, options).addTo(map);
-
-  });
-
-};
-
-// addLayer(cityMa,{
-//   pointToLayer: function (feature, loc){
-//     return L.circleMarker(loc, cityMarkerOptions);
-//   },
-//   onEachFeature: onEachFeature
-// });
 
 
-// Create layer selector
-function createSelector(layer) {
-    var condition = "";
-    var $options = $(".layer_selector").find("li");
-    $options.click(function(e) {
-        var $li = $(e.target);
-        var selected = $li.attr('data');
-        var type = $li.data('type');
 
-        if (type === "cartocss") {
-            $options.removeClass('cartocss_selected');
-            if (selected !== "simple") {
-                $li.addClass('cartocss_selected');
-            }
-            condition = $('#'+selected).text();
-            layer.setCartoCSS(condition);
-        } else {
-            $options.removeClass('sql_selected');
-            if (selected !== "") {
-                $li.addClass('sql_selected');
-            }
-            if (selected.indexOf('guinea') !== -1) {
-                map_object.setView(L.latLng([-9.5, 147.116667]),6);
-            } else {
-                map_object.setView(L.latLng([37.7741154,-122.4437914]),2);
-            }
-            layer.setSQL("SELECT * FROM " + tableName + selected);
-        }
-    });
-}
+
+
 
 /*=====================
 DROPDOWN STUFF
 ===================== */
 
-$('#dropdown').on('show.bs.dropdown', function () {
-  $('.dropdown-toggle').dropdown();
+// $('#dropdown').on('show.bs.dropdown', function () {
+//   $('.dropdown-toggle').dropdown();
+// });
+
+
+$(document).ready(function(){
+  $(".dropdown").on("hide.bs.dropdown", function(){
+    $(".btn").html('Dropdown <span class="caret"></span>');
+
+  });
 });
-
-
-
-
-
 
 
 /* =====================

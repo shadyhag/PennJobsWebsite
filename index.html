@@ -43,108 +43,116 @@
         </p>
         <div>
           <div id="sql" class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Concentration
+            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+              Concentration
+              <span class="caret"></span>
+            </button>
+            <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
+              <li><a href="#" value="arch" data-sql=" WHERE category = 'Architecture'" data-type="sql">Architecture</a></li>
+              <li><a href="#" value="comm" data-sql=" WHERE " data-type="sql">Community/Economic Development</a></li>
+              <!-- <li value ="arch" data=" WHERE = 'Architecture'" data-type="sql">Architecture</a></li> -->
+              <!-- <li data= " WHERE category =  'Architecture'" data-type="sql">Architecture</li> -->
+              <!-- <li value = "all" data=" WHERE " data-type="sql">City Planning</a></li>
+              <li data=" WHERE " data-type="sql">Community/Economic Development</a></li>
+              <li data=" WHERE " data-type="sql">Energy</a></li>
+              <li data=" WHERE " data-type="sql">GIS/Data/Technology</a></li>
+              <li data=" WHERE " data-type="sql">Historic Preservation</a></li>
+              <li data=" WHERE " data-type="sql">Housing</a></li>
+              <li data=" WHERE " data-type="sql">Landscape Architecture</a></li>
+              <li data=" WHERE " data-type="sql">Land Use/Environmental Planning</a></li>
+              <li data=" WHERE " data-type="sql">Real Estate/Property Development</a></li>
+              <li data=" WHERE " data-type="sql">Transportation</a></li>
+              <li data=" WHERE " data-type="sql">Urban Design</a></li>
+              <li data=" WHERE " data-type="sql">Other</a></li> -->
+            </ul>
+          </div>
+
+
+          <!-- <li data=" WHERE mag >= 5.0" data-type="sql"> -->
+          <div id="sql" class="dropdown">
+            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Job Type
               <span class="caret"></span></button>
               <ul class="dropdown-menu scrollable-menu" role = "menu">
                 <li data=" WHERE " data-type="sql">All</a></li>
-                <li data=" WHERE = 'Architecture'" data-type="sql">Architecture</a></li>
-                <li data=" WHERE " data-type="sql">City Planning</a></li>
-                <li data=" WHERE " data-type="sql">Community/Economic Development</a></li>
-                <li data=" WHERE " data-type="sql">Energy</a></li>
-                <li data=" WHERE " data-type="sql">GIS/Data/Technology</a></li>
-                <li data=" WHERE " data-type="sql">Historic Preservation</a></li>
-                <li data=" WHERE " data-type="sql">Housing</a></li>
-                <li data=" WHERE " data-type="sql">Landscape Architecture</a></li>
-                <li data=" WHERE " data-type="sql">Land Use/Environmental Planning</a></li>
-                <li data=" WHERE " data-type="sql">Real Estate/Property Development</a></li>
-                <li data=" WHERE " data-type="sql">Transportation</a></li>
-                <li data=" WHERE " data-type="sql">Urban Design</a></li>
-                <li data=" WHERE " data-type="sql">Other</a></li>
+                <li data=" WHERE " data-type="sql">Internship</a></li>
+                <li data=" WHERE " data-type="sql">Full-time</a></li>
+                <li data=" WHERE " data-type="sql">Part-time</a></li>
+                <li data=" WHERE " data-type="sql">Temporary</a></li>
+                <li data=" WHERE " data-type="sql">Contract</a></li>
               </ul>
             </div>
-<!-- <li data=" WHERE mag >= 5.0" data-type="sql"> -->
+
             <div id="sql" class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">Job Type
+              <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">Salary
                 <span class="caret"></span></button>
-                <ul class="dropdown-menu scrollable-menu" role = "menu">
+                <ul class="dropdown-menu scrollable-menu1" role = "menu1">
                   <li data=" WHERE " data-type="sql">All</a></li>
-                  <li data=" WHERE " data-type="sql">Internship</a></li>
-                  <li data=" WHERE " data-type="sql">Full-time</a></li>
-                  <li data=" WHERE " data-type="sql">Part-time</a></li>
-                  <li data=" WHERE " data-type="sql">Temporary</a></li>
-                  <li data=" WHERE " data-type="sql">Contract</a></li>
+                  <li data=" WHERE " data-type="sql">$35,000+</a></li>
+                  <li data=" WHERE " data-type="sql">$55,000+</a></li>
+                  <li data=" WHERE " data-type="sql">$65,000+</a></li>
+                  <li data=" WHERE " data-type="sql">$75,000+</a></li>
+                  <li data=" WHERE " data-type="sql">$85,000+</a></li>
+                  <li data=" WHERE " data-type="sql">$95,000+</a></li>
                 </ul>
               </div>
+            </div>
 
-              <div id="sql" class="dropdown">
-                <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">Salary
-                  <span class="caret"></span></button>
-                  <ul class="dropdown-menu scrollable-menu1" role = "menu1">
-                    <li data=" WHERE " data-type="sql">All</a></li>
-                    <li data=" WHERE " data-type="sql">$35,000+</a></li>
-                    <li data=" WHERE " data-type="sql">$55,000+</a></li>
-                    <li data=" WHERE " data-type="sql">$65,000+</a></li>
-                    <li data=" WHERE " data-type="sql">$75,000+</a></li>
-                    <li data=" WHERE " data-type="sql">$85,000+</a></li>
-                    <li data=" WHERE " data-type="sql">$95,000+</a></li>
-                  </ul>
-                </div>
-              </div>
+            <h3 class="subtitle">Exclude (if possible):</h3>
+            <div class="checkbox">
+              <label><input type="checkbox" value="">Unpaid</label>
+              <label><input type="checkbox" value="">Part-time</label>
+              <label><input type="checkbox" value="">Full-time</label>
+              <label><input type="checkbox" value="">Internship</label>
+              <label><input type="checkbox" value="">Entry-level</label>
+              <label><input type="checkbox" value="">Senior-level</label>
+              <label><input type="checkbox" value="">Closed</label>
+            </div>
 
-              <h3 class="subtitle">Exclude (if possible):</h3>
-              <div class="checkbox">
-                <label><input type="checkbox" value="">Unpaid</label>
-                <label><input type="checkbox" value="">Part-time</label>
-                <label><input type="checkbox" value="">Full-time</label>
-                <label><input type="checkbox" value="">Internship</label>T
-                <label><input type="checkbox" value="">Entry-level</label>
-                <label><input type="checkbox" value="">Senior-level</label>
-                <label><input type="checkbox" value="">Closed</label>
-              </div>
-
-              <div id= "dialog" class="cartodb-popup v2">
-                <a href="#close" class="cartodb-popup-close-button close">x</a>
-                <div class="cartodb-popup-content-wrapper">
-                  <div class="cartodb-popup-content">
-                    <h4>firm_name</h4>
-                    <p>{{firm_name}}</p>
-                    <h4>job_title</h4>
-                    <p>{{job_title}}</p>
-                    <h4>job_type</h4>
-                    <p>{{job_type}}</p>
-                    <h4>paid</h4>
-                    <p>{{paid}}</p>
-                  </div>
-                </div>
-                <div class="cartodb-popup-tip-container"></div>
-              </div>
-
-              <!-- <div id="controls">
-              <input class = "button btn btn default" type="button" onclick="startEdits()" value="Click to Start Editing">
-              <input class = "button btn btn default" type="button" onclick="stopEdits()" value="Stop Your Editing Session"><br>
-            </div> -->
-
+            <!-- <div id= "dialog" class="cartodb-popup v2">
+            <a href="#close" class="cartodb-popup-close-button close">x</a>
+            <div class="cartodb-popup-content-wrapper">
+            <div class="cartodb-popup-content">
+            <h4>firm_name</h4>
+            <p>{{firm_name}}</p>
+            <h4>job_title</h4>
+            <p>{{job_title}}</p>
+            <h4>job_type</h4>
+            <p>{{job_type}}</p>
+            <h4>paid</h4>
+            <p>{{paid}}</p>
           </div>
         </div>
-      </div>
+        <div class="cartodb-popup-tip-container"></div>
+      </div> -->
+
+      <!-- <div id="controls">
+      <input class = "button btn btn default" type="button" onclick="startEdits()" value="Click to Start Editing">
+      <input class = "button btn btn default" type="button" onclick="stopEdits()" value="Stop Your Editing Session"><br>
+    </div> -->
+
+  </div>
+</div>
+</div>
 
 
 
 
 
-      <!-- Map -->
+<!-- Map -->
 
-      <div id="map" class="map"></div>
-
-
+<div id="map" class="map"></div>
 
 
-      <!-- Javascript Imports -->
-      <script src="js/leaflet.js"></script>
-      <script src="js/jquery-2.2.0.js"></script>
-      <script src="js/underscore.js"></script>
-      <script src="js/main.js"></script>
-      <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js" type="text/javascript"></script>
-      <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-    </body>
-    </html>
+
+
+<!-- Javascript Imports -->
+<script src="js/leaflet.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<script src="js/underscore.js"></script>
+<script src="js/main.js"></script>
+<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+<script src="js/underscore.js"></script>
+
+</body>
+</html>

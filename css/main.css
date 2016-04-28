@@ -35,7 +35,13 @@ body{
     height: auto;
     max-height: 200px;
     overflow-x: hidden;
+  }
+
+ul.dropdown-menu.scrollable-menu, ul.dropdown-menu.scrollable-menu1 {
+    padding-left: 10px;
+    
 }
+
 
 .scrollable-menu1 {
     height: auto;
