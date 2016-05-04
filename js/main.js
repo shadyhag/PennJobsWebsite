@@ -9,15 +9,15 @@ DATA RETRIEVAL AND SETUP
 var all = "https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&q=SELECT * FROM pennjobsdatatable20160418";
 
 
-cartodb.createVis(map, vizjson_url)
-  .done(function(vis, layers) {
-    // do stuff
-    alert("Layers has " + layers.length + " layers.");
-  })
-  .error(function(err) {
-    // report error
-    console.log("An error occurred: " + err);
-  });
+// cartodb.createVis(map, vizjson_url)
+//   .done(function(vis, layers) {
+//     // do stuff
+//     alert("Layers has " + layers.length + " layers.");
+//   })
+//   .error(function(err) {
+//     // report error
+//     console.log("An error occurred: " + err);
+//   });
 
 
 
