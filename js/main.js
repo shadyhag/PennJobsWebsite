@@ -26,7 +26,7 @@ window.onload = function() {
   };
   function showJobs(){
 
-    $.getJSON("http://shayda.rocks/jobs.php", filterOptions, function(data) {
+    $.getJSON("jobs.php", filterOptions, function(data) {
       jobs = L.geoJson(data,{
         pointToLayer: function(feature,loc){
           return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
@@ -45,29 +45,15 @@ window.onload = function() {
   CHECKBOX STUFF
   ===================== */
 
-  // $.get("jobs.php", {not_types: ["Unpaid", "Part-time", "Full-time", "Internship","Entry-level",
-  // "Senior-level", "Closed"]}, function(data) { console.log(data);});
-  //
-// }
-  // Event Listeners
-
 
   $('input[value=NoFT]').click(function(){
-    if($(this).checked()){
+    if($(this).is(":checked")){
       filterOptions["not_types"].push("Full-time");
     }else{
       filterOptions["not_types"].remove("Full-time");
     }
     showJobs();
   });
-
-
-  // // Event Listeners
-  // $('input[value=all]').click(function(){
-  //   showAll();
-  //   console.log(jobs);
-  // });
-
 
 
   /*=====================
