@@ -36,21 +36,20 @@ window.onload = function() {
     });
   }
 
-  $( document ).ready(function() {
-    showJobs();
-  });
+  $(showJobs);
 
 
   /*=====================
   CHECKBOX STUFF
   ===================== */
 
-
   $('input[value=NoFT]').click(function(){
     if($(this).is(":checked")){
       filterOptions["not_types"].push("Full-time");
     }else{
-      filterOptions["not_types"].remove("Full-time");
+      filterOptions["not_types"] = filterOptions["not_types"].filter(function(name) {
+        return name === "Full-time"
+      });
     }
     showJobs();
   });
