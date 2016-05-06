@@ -49,28 +49,20 @@ function showAll(){
 showAll();
 
 
-// Event Listeners
-$('li[value=arch]').click(function(){
-  showArch();
+
+/*=====================
+DROPDOWN STUFF
+===================== */
+
+$('#sql .dropdown-menu a').click(function(e){
+  e.preventDefault();
+  var selection = $(this);
+  var selectedCategory = selection.attr('value');
+  var selectedSql = selection.data('sql');
+  $('#text-category').text(selectedCategory);
+  $('#text-sql').text(selectedSql);
 });
 
-$('li[value=all]').click(function(){
-  showAll();
-});
-
-function showArch(){
-      if(map.hasLayer(jobs)){
-        map.removeLayer(jobs);
-      }
-      $.getJSON("https://"+cartoDBUserName+".cartodb.com/api/v2/sql?format=GeoJSON&q="+sqlQueryArchitecture, function(data) {
-        jobs = L.geoJson(data,{
-          pointToLayer: function(feature,loc){
-            return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
-          },
-          onEachFeature: onEachFeature
-        }).addTo(map);
-      });
-    }
 
 
 
@@ -168,11 +160,6 @@ LAYER STUFF
 
 
 
-
-
-/*=====================
-DROPDOWN STUFF
-===================== */
 
 
 
