@@ -15,22 +15,12 @@
 
 
 
-  <!-- =====================
-  Edit css/main.css
-
-  ====================== -->
-
 </head>
 <body>
 
   <!-- Sidebar -->
   <div class="sidebar">
     <div class="top">
-
-      <!-- =====================
-      SLIDE 1
-
-      ====================== -->
 
       <div id= "content1">
 
@@ -42,7 +32,9 @@
           for jobs related to their interests more involved than it needs to be. Navigate to the dropdowns below and filter out opportunities based on Location, Concentration, and/or Experience
         </p>
         <div>
-          <div>
+
+          <div class="Dropdowns">
+
             <div id="sql" class="dropdown">
               <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                 Concentration
@@ -65,12 +57,12 @@
               </ul>
             </div>
 
-          <!-- <li><a href="#" value="comm" data-sql=" WHERE mag >= 5.0" data-type="sql"> -->
-          <div id="sql" class="dropdown">
-            <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
-              Job Type
-              <span class="caret"></span>
-            </button>
+            <!-- <li><a href="#" value="comm" data-sql=" WHERE mag >= 5.0" data-type="sql"> -->
+            <div id="sql" class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Job Type
+                <span class="caret"></span>
+              </button>
               <ul class="dropdown-menu" aria-labelledby="dropdownMenu1">
                 <li><a href="#" value="all" data-sql=" WHERE " data-type="sql">All</a></li>
                 <li><a href="#" value="inter" data-sql=" WHERE " data-type="sql">Internship</a></li>
@@ -98,61 +90,48 @@
             </div>
 
             <h3 class="subtitle">Exclude (if possible):</h3>
-            <div class="checkbox">
-              <label><input type="checkbox" value="">Unpaid</label>
-              <label><input type="checkbox" value="">Part-time</label>
-              <label><input type="checkbox" value="">Full-time</label>
-              <label><input type="checkbox" value="">Internship</label>
-              <label><input type="checkbox" value="">Entry-level</label>
-              <label><input type="checkbox" value="">Senior-level</label>
-              <label><input type="checkbox" value="">Closed</label>
+            <div id="controls"class="checkbox">
+              <div id="form">
+                <form action"">
+                <label><input type="checkbox" name ="filter" value="NoUnpaid">Unpaid</label>
+                <label><input type="checkbox" name ="filter" value="NoPT">Part-time</label>
+                <label><input type="checkbox" name ="filter" value="NoFT">Full-time</label>
+                <label><input type="checkbox" name ="filter" value="NoInt">Internship</label>
+                <label><input type="checkbox" name ="filter" value="NoEL">Entry-level</label>
+                <label><input type="checkbox" name ="filter" value="NoSrL">Senior-level</label>
+                <label><input type="checkbox" name ="filter" value="NoClosed">Closed</label>
+              </form>
+              </div>
             </div>
 
-            <!-- <div id= "dialog" class="cartodb-popup v2">
-            <a href="#close" class="cartodb-popup-close-button close">x</a>
-            <div class="cartodb-popup-content-wrapper">
-            <div class="cartodb-popup-content">
-            <h4>firm_name</h4>
-            <p>{{firm_name}}</p>
-            <h4>job_title</h4>
-            <p>{{job_title}}</p>
-            <h4>job_type</h4>
-            <p>{{job_type}}</p>
-            <h4>paid</h4>
-            <p>{{paid}}</p>
+
+
           </div>
+
         </div>
-        <div class="cartodb-popup-tip-container"></div>
-      </div> -->
 
-      <!-- <div id="controls">
-      <input class = "button btn btn default" type="button" onclick="startEdits()" value="Click to Start Editing">
-      <input class = "button btn btn default" type="button" onclick="stopEdits()" value="Stop Your Editing Session"><br>
-    </div> -->
+      </div>
 
-  </div>
-</div>
-</div>
-</div>
+    </div>
 
 
 
 
-<!-- Map -->
+    <!-- Map -->
 
-<div id="map" class="map"></div>
-
-
+    <div id="map" class="map"></div>
 
 
-<!-- Javascript Imports -->
-<script src="js/leaflet.js"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-<script src="js/underscore.js"></script>
-<script src="js/main.js"></script>
-<script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
-<script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-<script src="js/underscore.js"></script>
 
-</body>
-</html>
+
+    <!-- Javascript Imports -->
+    <script src="js/leaflet.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="js/underscore.js"></script>
+    <script src="js/main.js"></script>
+    <script src="http://libs.cartocdn.com/cartodb.js/v3/3.15/cartodb.js"></script>
+    <script src="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
+
+
+  </body>
+  </html>
