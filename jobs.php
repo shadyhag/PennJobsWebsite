@@ -1,4 +1,6 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+
 define('BASE_URL', "https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&api_key=f816e999bf9b5e7d7a5352138f2f23007fc184d4");
 
 function getJobs($exclude_types, $exclude_experience_levels){
