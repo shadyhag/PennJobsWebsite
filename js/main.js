@@ -85,19 +85,6 @@ var layerSource = {
   }]
 };
 
-$('#sql .dropdown-menu a').click(function(e){
-  e.preventDefault();
-  var selection = $(this);
-  var selectedCategory = selection.attr('value');
-  var selectedSql = selection.data('sql');
-  $('#text-category').text(selectedCategory);
-  $('#text-sql').text(selectedSql);
-});
-
-
-
-
-
 
 /*=====================
 
@@ -187,17 +174,6 @@ LAYER STUFF
 DROPDOWN STUFF
 ===================== */
 
-// $('#dropdown').on('show.bs.dropdown', function () {
-//   $('.dropdown-toggle').dropdown();
-// });
-
-
-$(document).ready(function(){
-  $(".dropdown").on("hide.bs.dropdown", function(){
-    $(".btn").html('Dropdown <span class="caret"></span>');
-
-  });
-});
 
 
 /* =====================
@@ -211,16 +187,16 @@ var map = L.map('map', {
 // for storing sublayer outside of createlayer
 var sublayers;
 
-// Add data layer to your map
-cartodb.createLayer(map,layerSource)
-    .addTo(map)
-    .done(function(layer) {
-        sublayer = layer.getSubLayer(0);
-        createSelector(sublayer);
-    })
-    .error(function(err) {
-        console.log("error: " + err);
-    });
+// // Add data layer to your map
+// cartodb.createLayer(map,layerSource)
+//     .addTo(map)
+//     .done(function(layer) {
+//         sublayer = layer.getSubLayer(0);
+//         createSelector(sublayer);
+//     })
+//     .error(function(err) {
+//         console.log("error: " + err);
+//     });
 
 var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   attribution: 'Map tiles by <State`="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
