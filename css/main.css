@@ -25,6 +25,10 @@ body{
   text-decoration:none;
 }
 
+.glyphicon-menu-hamburger:focus {
+  color:#16174f;
+  text-decoration:none;
+}
 .glyphicon-menu-hamburger {
   color:#963019;
 
@@ -32,11 +36,11 @@ body{
 
 .drawer-right .drawer-controls{
   float: left;
-  margin-left: -10%;
-  margin-right: 0;
-  font-size: 25px;
+  /*margin-left: -13%;*/
+  font-size: 35px;
   font-weight: bold;
-  color: #963019
+  color: #963019;
+  margin-top: -1%;
 }
 .sidebar{
   position:absolute;
