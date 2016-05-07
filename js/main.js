@@ -33,12 +33,11 @@ window.onload = function() {
         pointToLayer: function(feature,loc){
           var marker = L.circleMarker(loc, cityMarkerOptions);
           marker.on('click', function(e) {
-                var popLocation= e.latlng;
-                console.log(popLocation);
-                nearJobsInfo(popLocation);
+                console.log(feature.properties.city1, feature.properties.state1);
+                nearJobsInfo({city: feature.properties.city1, state: feature.properties.state1});
+
             });
             return marker;
-          // .bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
         },
         onEachFeature: onEachFeature
       }).addTo(map);
@@ -59,13 +58,13 @@ var filterOptions = {
 /*=====================
 MARKER STUFF
 ===================== */
-function nearJobsInfo(latlng){
+function nearJobsInfo(location){
   var opts = {
     not_types: filterOptions.types,
     not_experience: filterOptions.not_experience,
     concz: filterOptions.concz,
-    lat: latlng.lat,
-    long: latlng.lng
+    city: location.city,
+    state: location.state
   };
 
   $.get("jobdata.php", opts, function(data) {

@@ -3,13 +3,15 @@ header('Content-Type: application/json');
 error_reporting(0);
 define('BASE_URL', "https://shayda.cartodb.com/api/v2/sql?format=JSON&api_key=f816e999bf9b5e7d7a5352138f2f23007fc184d4");
 
-function getJobs($types, $exclude_experience_levels,$concentrations, $lat, $long){
+function getJobs($types, $exclude_experience_levels,$concentrations, $city, $state){
   $sql = "SELECT * FROM pennjobsdatatable20160418";
   $wheres = [];
 
-  if (is_numeric($lat) && is_numeric($long)){
-    $wheres[]= "ST_Distance_Sphere(the_geom, ST_MakePoint($long, $lat)) <= 10 * 1609.34";
+  //
+  if ($city && $state){
+    $wheres[]= "city1 = '$city' AND state1= '$state'";
   }
+
   //
   if (!empty($concentrations) && $concentrations !== "All") {
     $wheres[] = "category ='$concentrations'";
@@ -36,5 +38,5 @@ function getJobs($types, $exclude_experience_levels,$concentrations, $lat, $long
   return file_get_contents($url);
 }
 
-$job_json = getJobs($_GET["not_types"], $_GET["not_experience"], $_GET["concz"], $_GET["lat"], $_GET["long"]);
+$job_json = getJobs($_GET["not_types"], $_GET["not_experience"], $_GET["concz"], $_GET["city"], $_GET["state"]);
 print($job_json);
