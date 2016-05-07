@@ -23,7 +23,6 @@ window.onload = function() {
 
 
   function showJobs(){
-
     $.get("jobs.php", filterOptions, function(data) {
 
       if (jobs !== null) {
@@ -33,18 +32,19 @@ window.onload = function() {
         pointToLayer: function(feature,loc){
           var marker = L.circleMarker(loc, cityMarkerOptions);
           marker.on('click', function(e) {
-                console.log(feature.properties.city1, feature.properties.state1);
-                nearJobsInfo({city: feature.properties.city1, state: feature.properties.state1});
-
-            });
-            return marker;
+            console.log(feature.properties.city1, feature.properties.state1);
+            nearJobsInfo({city: feature.properties.city1, state: feature.properties.state1});
+            $("#drawerExample").drawer("show");
+            $(".drawer-title").empty();
+            $(".drawer-title").text("Opportunities in "+feature.properties.city1+", "+ feature.properties.state1);
+            $(".drawer-body").empty();
+          });
+          return marker;
         },
         onEachFeature: onEachFeature
       }).addTo(map);
-
     }
   );
-
 }
 
 $(showJobs);
@@ -68,16 +68,18 @@ function nearJobsInfo(location){
   };
 
   $.get("jobdata.php", opts, function(data) {
-    console.log("name", data);
-
-    // jobs = L.geoJson(data,{
-    //   pointToLayer: function(feature,loc){
-    //     return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
-    //   },
-    //   onEachFeature: onEachFeature
-    // }).addTo(map);
+    console.log(data.rows);
+      $.each(data.rows, function(){$('.drawer-body').append("<div>"+this.job_title+"<div>");});
   });
 }
+
+// jobs = L.geoJson(data,{
+//   pointToLayer: function(feature,loc){
+//     return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+//   },
+//   onEachFeature: onEachFeature
+// }).addTo(map);
+
 
 /*=====================
 CHECKBOX STUFF
@@ -231,9 +233,9 @@ Infowindow
 //
 //   });
 
-  // .setLatLng(popLocation)
-  // .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-  // .openOn(map);
+// .setLatLng(popLocation)
+// .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+// .openOn(map);
 
 // cartodb.createLayer(map, '"https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&q=', {
 //     query: 'SELECT * FROM pennjobsdatatable20160418 ORDER BY post_date DESC'
