@@ -8,7 +8,7 @@ function getJobs($types, $exclude_experience_levels,$concentrations, $lat, $long
   $wheres = [];
 
   if (is_numeric($lat) && is_numeric($long)){
-    $wheres[]= "ST_Distance_Sphere(the_geom, ST_MakePoint($lat,$long)) <= 10 * 1609.34";
+    $wheres[]= "ST_Distance_Sphere(the_geom, ST_MakePoint($long, $lat)) <= 10 * 1609.34";
   }
   //
   if (!empty($concentrations) && $concentrations !== "All") {
