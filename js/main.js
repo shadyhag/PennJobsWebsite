@@ -35,6 +35,7 @@ window.onload = function() {
           marker.on('click', function(e) {
                 var popLocation= e.latlng;
                 console.log(popLocation);
+                nearJobsInfo(popLocation);
             });
             return marker;
           // .bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
@@ -67,14 +68,16 @@ function nearJobsInfo(latlng){
     long: latlng.lng
   };
 
-  $.get("jobs.php", opts, function(data) {
-    jobs = L.geoJson(data,{
-      pointToLayer: function(feature,loc){
-        return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
-      },  
-      onEachFeature: onEachFeature
-    }).addTo(map);
-  }); 
+  $.get("jobdata.php", opts, function(data) {
+    console.log("name", data);
+
+    // jobs = L.geoJson(data,{
+    //   pointToLayer: function(feature,loc){
+    //     return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+    //   },
+    //   onEachFeature: onEachFeature
+    // }).addTo(map);
+  });
 }
 
 /*=====================
