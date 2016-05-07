@@ -1,14 +1,16 @@
 <?php
+header('Content-Type: application/json');
+error_reporting(0);
 define('BASE_URL', "https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&api_key=f816e999bf9b5e7d7a5352138f2f23007fc184d4");
 
-function getJobs($exclude_types, $exclude_experience_levels){
-  $sql = "SELECT * FROM pennjobsdatatable20160220";
+function getJobs($types, $exclude_experience_levels){
+  $sql = "SELECT * FROM pennjobsdatatable20160418";
   $wheres = [];
 
 
   // exclude based on job_type field
-  if(!empty($exclude_types)){
-    $wheres[] = "job_type NOT IN('".implode($exclude_types, "','")."')";
+  if(!empty($types)){
+    $wheres[] = "job_type NOT IN('".implode($types, "','")."')";
   }
 
   // exclude based on the experience field

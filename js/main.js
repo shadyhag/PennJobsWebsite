@@ -22,38 +22,58 @@ window.onload = function() {
     ===================== */
 
   var filterOptions = {
-    not_types: []
+    not_types: [],
+    not_experience: []
   };
   function showJobs(){
-
-    $.getJSON("jobs.php", filterOptions, function(data) {
+    console.log("mama");
+    $.get("jobs.php", filterOptions, function(data) {
+      console.log("boob", data);
       jobs = L.geoJson(data,{
         pointToLayer: function(feature,loc){
           return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
         },
         onEachFeature: onEachFeature
       }).addTo(map);
-    });
+
+    },
+    "application/json"
+  );
+
   }
 
   $(showJobs);
 
-
+  console.log("boobz");
   /*=====================
   CHECKBOX STUFF
   ===================== */
 
-  $('input[value=NoFT]').click(function(){
+  $('input.filter-job_type:checkbox').click(function(){
+    var val = $(this).val();
+    console.log("poop");
     if($(this).is(":checked")){
-      filterOptions["not_types"].push("Full-time");
+      filterOptions.not_types.push(val);
     }else{
-      filterOptions["not_types"] = filterOptions["not_types"].filter(function(name) {
-        return name === "Full-time"
+      filterOptions.not_types = filterOptions.not_types.filter(function(name) {
+        return name === val;
       });
     }
     showJobs();
   });
 
+  $('input.filter-experience:checkbox').click(function(){
+    var val = $(this).val();
+    console.log("pee");
+    if($(this).is(":checked")){
+      filterOptions.not_experience.push(val);
+    }else{
+      filterOptions.not_experience = filterOptions.not_experience.filter(function(name) {
+        return name === val;
+      });
+    }
+    showJobs();
+  });
 
   /*=====================
   DROPDOWN STUFF
