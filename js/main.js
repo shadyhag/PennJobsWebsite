@@ -82,7 +82,7 @@ CHECKBOX STUFF
 ===================== */
 
 $('input.filter-job_type:checkbox').click(function(){
-  var val = $(this).val();
+  var val = $(this).attr("value");
   console.log("poop");
   if($(this).is(":checked")){
     filterOptions.not_types.push(val);
@@ -95,7 +95,7 @@ $('input.filter-job_type:checkbox').click(function(){
 });
 
 $('input.filter-experience:checkbox').click(function(){
-  var val = $(this).val();
+  var val = $(this).attr("value");
   console.log("pee");
   if($(this).is(":checked")){
     filterOptions.not_experience.push(val);
