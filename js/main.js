@@ -12,7 +12,6 @@ window.onload = function() {
   var cartoDBUsername = "shayda";
 
   // Write SQL Selection Query to be Used on CartoDB Table
-  // Name of table is 'data_collector'
 
 
   var filterOptions = {
