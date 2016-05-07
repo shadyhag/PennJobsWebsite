@@ -15,11 +15,11 @@ window.onload = function() {
   // Name of table is 'data_collector'
 
 
-    /*=====================
+  /*=====================
 
-    LOAD MAP WITH ALL JOBS
+  LOAD MAP WITH ALL JOBS
 
-    ===================== */
+  ===================== */
 
   var filterOptions = {
     not_types: [],
@@ -29,15 +29,17 @@ window.onload = function() {
     console.log("mama");
     $.get("jobs.php", filterOptions, function(data) {
       console.log("boob", data);
-      jobs = L.geoJson(data,{
-        pointToLayer: function(feature,loc){
-          return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
-        },
-        onEachFeature: onEachFeature
-      }).addTo(map);
+      if (jobs !== null) {
+        jobs.clearLayers();}
+        jobs = L.geoJson(data,{
+          pointToLayer: function(feature,loc){
+            return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+          },
+          onEachFeature: onEachFeature
+        }).addTo(map);
 
-    }
-  );
+      }
+    );
 
   }
 
