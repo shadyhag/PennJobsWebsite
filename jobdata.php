@@ -7,7 +7,9 @@ function getJobs($types, $exclude_experience_levels,$concentrations, $lat, $long
   $sql = "SELECT * FROM pennjobsdatatable20160418";
   $wheres = [];
 
-
+  if (is_numeric($lat) && is_numeric($long)){
+    $wheres[]= "ST_Distance_Sphere(the_geom, ST_MakePoint($lat,$long)) <= 10 * 1609.34";
+  }
   //
   if (!empty($concentrations) && $concentrations !== "All") {
     $wheres[] = "category ='$concentrations'";
