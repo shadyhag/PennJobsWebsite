@@ -34,7 +34,7 @@ window.onload = function() {
 
   function nearJobsInfo(){
     var opts = {
-      not_types: filterOptions.types,
+      not_types: filterOptions.not_types,
       not_experience: filterOptions.not_experience,
       concz: filterOptions.concz,
       city: location.city,
