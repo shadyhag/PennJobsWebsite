@@ -4,7 +4,7 @@ error_reporting(0);
 define('BASE_URL', "https://shayda.cartodb.com/api/v2/sql?format=JSON&api_key=f816e999bf9b5e7d7a5352138f2f23007fc184d4");
 
 function getJobs($types, $exclude_experience_levels,$concentrations, $city, $state){
-  $sql = "SELECT * FROM pennjobsdatatable20160418";
+  $sql = "SELECT * FROM pennjobsdatatable";
   $wheres = [];
 
   //
