@@ -17,13 +17,11 @@ window.onload = function() {
   var filterOptions = {
     not_types: [],
     not_experience: [],
-    concz: []
+    concz: [],
+    salary: []
   };
   var location= {};
 
-  /*=====================
-  MARKER STUFF
-  ===================== */
 
   /*=====================
 
@@ -48,13 +46,11 @@ window.onload = function() {
   }
 
 
-
   /*=====================
 
   LOAD MAP WITH ALL JOBS
 
   ===================== */
-
 
   function showJobs(){
     $.get("jobs.php", filterOptions, function(data) {
@@ -131,7 +127,8 @@ $('input.resetboxes').click(function(){
   location= {};
   showJobs();
   $('input:checkbox').prop('checked',false);
-
+  $(".drawer-title").text("Job Opportunities");
+  $(".drawer-body").html("<p>Click on a marker in the map to view job opportunities in that area.</p>");
 });
 /*=====================
 DROPDOWN STUFF
@@ -146,14 +143,19 @@ $('#concentrationz .dropdown-menu a').click(function(e){
   showJobs();
 });
 
+$('#salariez .dropdown-menu a').click(function(e){
+  e.preventDefault();
+  var selection = $(this);
+  var selectedCategory = selection.attr('value');
+  console.log("BLObbbbbB", selectedCategory);
+  filterOptions.salary = selectedCategory;
+  showJobs();
+});
 
 
 /*=====================
-
 STYLES
-
 ===================== */
-
 
 
 var cityMarkerOptions = {
@@ -168,12 +170,8 @@ var cityMarkerOptions = {
 };
 
 
-
-
 /*=====================
-
 MARKER INTERACTIVITY
-
 ===================== */
 
 
@@ -217,20 +215,6 @@ function onEachFeature(feature, layer) {
 
 
 }
-
-
-
-
-
-
-/*=====================
-LAYER STUFF
-===================== */
-
-
-
-
-
 
 
 /* =====================

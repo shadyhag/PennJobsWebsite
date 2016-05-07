@@ -21,7 +21,7 @@
 <!-- Drawer -->
     <div id="drawerExample" class="drawer dw-xs-10 dw-sm-6 dw-md-4 fold drawer-right" aria-labelledby="drawerExample">
         <div class="drawer-controls">
-            <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample" class="btn btn-primary btn-sm">Menu</a>
+            <a href="#drawerExample" data-toggle="drawer" aria-foldedopen="false" aria-controls="drawerExample" class="glyphicon glyphicon-menu-hamburger"></a>
         </div>
         <div class="drawer-contents">
             <div class="drawer-heading">
@@ -75,7 +75,7 @@
                 <li><a href="#" value="Energy" >Energy</a></li>
                 <li><a href="#" value="GIS/Data/Technology" >GIS/Data/Technology</a></li>
                 <li><a href="#" value="Historic Preservation" >Historic Preservation</a></li>
-                <li><a href="#" value="Housing" >Housing</a></li>
+                <li><a href="#" value="Housing">Housing</a></li>
                 <li><a href="#" value="Landscape Architecture" >Landscape Architecture</a></li>
                 <li><a href="#" value="Land Use/Environmental Planning" >Land Use/Environmental Planning</a></li>
                 <li><a href="#" value="Real Estate/Property Development" >Real Estate/Property Development</a></li>
@@ -85,22 +85,26 @@
               </ul>
             </div>
 
-<!--
 
-            <div id="sql" class="dropdown">
-              <button class="btn btn-default dropdown-toggle" type="button"  data-toggle="dropdown">Salary
-                <span class="caret"></span></button>
-                <ul class="dropdown-menu scrollable-menu1" role = "menu1">
-                  <li><a href="#" value="all" data-sql=" WHERE " data-type="sql">All</a></li>
-                  <li><a href="#" value="s35k" data-sql=" WHERE " data-type="sql">$35,000+</a></li>
-                  <li><a href="#" value="s55k" data-sql=" WHERE " data-type="sql">$45,000+</a></li>
-                  <li><a href="#" value="s55k" data-sql=" WHERE " data-type="sql">$55,000+</a></li>
-                  <li><a href="#" value="s65k" data-sql=" WHERE " data-type="sql">$65,000+</a></li>
-                  <li><a href="#" value="s75k" data-sql=" WHERE " data-type="sql">$75,000+</a></li>
-                  <li><a href="#" value="s85k" data-sql=" WHERE " data-type="sql">$85,000+</a></li>
-                  <li><a href="#" value="s95k" data-sql=" WHERE " data-type="sql">$95,000+</a></li>
+
+            <div id="salariez" class="dropdown">
+              <button class="btn btn-default dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
+                Salary
+                <span class="caret"></span>
+              </button>
+              <ul class="dropdown-menu" aria-labelledby="dropdownMenu2">
+                  <li><a href="#" value="0">All</a></li>
+                  <li><a href="#" value="15000">$15,000+</a></li>
+                  <li><a href="#" value="25000">$25,000+</a></li>
+                  <li><a href="#" value="35000">$35,000+</a></li>
+                  <li><a href="#" value="45000">$45,000+</a></li>
+                  <li><a href="#" value="55000">$55,000+</a></li>
+                  <li><a href="#" value="65000">$65,000+</a></li>
+                  <li><a href="#" value="75000">$75,000+</a></li>
+                  <li><a href="#" value="85000">$85,000+</a></li>
+                  <li><a href="#" value="95000">$95,000+</a></li>
                 </ul>
-              </div> -->
+              </div>
 
 
 
@@ -110,7 +114,7 @@
             <div id="controls"class="checkbox">
               <div id="form">
                 <form action"">
-                  <ul class ="checkbox list">
+                  <ul style="list-style-type:none" class ="checkbox list">
                 <li><label><input type="checkbox" class ="filter-job_type" value="Unpaid">Unpaid</label></li>
                 <li><label><input type="checkbox" class ="filter-job_type" value="Part-time">Part-time</label></li>
                 <li><label><input type="checkbox" class ="filter-job_type" value="Full-time">Full-time</label></li>
@@ -123,7 +127,9 @@
               </form>
               </div>
               <div>
-                <li><input type="reset" class= "resetboxes" value="Reset Filters"></li>
+
+                <input type="reset" class= "btn btn-default resetboxes" value="Reset Filters">
+
               </div>
             </div>
 

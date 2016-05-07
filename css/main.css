@@ -16,6 +16,28 @@ body{
   top:0;
 }
 
+#drawerExample .drawer-contents{
+  background-color:#f6f1ed
+}
+
+.glyphicon-menu-hamburger:hover {
+  color:#16174f;
+  text-decoration:none;
+}
+
+.glyphicon-menu-hamburger {
+  color:#963019;
+
+}
+
+.drawer-right .drawer-controls{
+  float: left;
+  margin-left: -10%;
+  margin-right: 0;
+  font-size: 25px;
+  font-weight: bold;
+  color: #963019
+}
 .sidebar{
   position:absolute;
   height:100%;
@@ -39,7 +61,7 @@ body{
 
 ul.dropdown-menu.scrollable-menu, ul.dropdown-menu.scrollable-menu1 {
     padding-left: 10px;
-    
+
 }
 
 
@@ -122,7 +144,7 @@ ul.dropdown-menu.scrollable-menu, ul.dropdown-menu.scrollable-menu1 {
   float:right;
 }
 
-.title{
+.title, .drawer-title{
   position:relative;
   left:0;
   margin:0;

@@ -3,13 +3,16 @@ header('Content-Type: application/json');
 error_reporting(0);
 define('BASE_URL', "https://shayda.cartodb.com/api/v2/sql?format=JSON&api_key=f816e999bf9b5e7d7a5352138f2f23007fc184d4");
 
-function getJobs($types, $exclude_experience_levels,$concentrations, $city, $state){
+function getJobs($types, $exclude_experience_levels,$concentrations, $city, $state, $salary){
   $sql = "SELECT * FROM pennjobsdatatable";
   $wheres = [];
 
   //
   if ($city && $state){
     $wheres[]= "city1 = '$city' AND state1= '$state'";
+  }
+  if ($salary){
+    $wheres[]= "losal >= '$salary'";
   }
 
   //
@@ -38,5 +41,5 @@ function getJobs($types, $exclude_experience_levels,$concentrations, $city, $sta
   return file_get_contents($url);
 }
 
-$job_json = getJobs($_GET["not_types"], $_GET["not_experience"], $_GET["concz"], $_GET["city"], $_GET["state"]);
+$job_json = getJobs($_GET["not_types"], $_GET["not_experience"], $_GET["concz"], $_GET["city"], $_GET["state"], $_GET["salary"]);
 print($job_json);
