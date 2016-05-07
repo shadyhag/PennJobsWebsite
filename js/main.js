@@ -83,6 +83,7 @@ window.onload = function() {
   );
   if (location.city && location.state)  {
     nearJobsInfo();
+
   }
 }
 
@@ -93,7 +94,7 @@ $(showJobs);
 CHECKBOX STUFF
 ===================== */
 
-$('input.filter-job_type:checkbox').click(function(){
+$('input.filter-job_type:checkbox').change(function(){
   var val = $(this).attr("value");
   console.log("poop");
   if($(this).is(":checked")){
@@ -106,7 +107,7 @@ $('input.filter-job_type:checkbox').click(function(){
   showJobs();
 });
 
-$('input.filter-experience:checkbox').click(function(){
+$('input.filter-experience:checkbox').change(function(){
   var val = $(this).attr("value");
   console.log("pee");
   if($(this).is(":checked")){
@@ -118,7 +119,21 @@ $('input.filter-experience:checkbox').click(function(){
   }
   showJobs();
 });
+/*=====================
+RESET CHECKBOXES STUFF
+===================== */
 
+$('input.resetboxes').click(function(){
+  filterOptions = {
+    not_types: [],
+    not_experience: [],
+    concz: []
+  };
+  location= {};
+  showJobs();
+  $('input:checkbox').prop('checked',false);
+
+});
 /*=====================
 DROPDOWN STUFF
 ===================== */
