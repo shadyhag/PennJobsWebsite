@@ -21,11 +21,7 @@ window.onload = function() {
 
   ===================== */
 
-  var filterOptions = {
-    not_types: [],
-    not_experience: [],
-    concz: []
-  };
+
   function showJobs(){
 
     $.get("jobs.php", filterOptions, function(data) {
@@ -35,7 +31,13 @@ window.onload = function() {
       }
       jobs = L.geoJson(data,{
         pointToLayer: function(feature,loc){
-          return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+          var marker = L.circleMarker(loc, cityMarkerOptions);
+          marker.on('click', function(e) {
+                var popLocation= e.latlng;
+                console.log(popLocation);
+            });
+            return marker;
+          // .bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
         },
         onEachFeature: onEachFeature
       }).addTo(map);
@@ -46,6 +48,27 @@ window.onload = function() {
 }
 
 $(showJobs);
+
+var filterOptions = {
+  not_types: [],
+  not_experience: [],
+  concz: []
+};
+
+/*=====================
+MARKER STUFF
+===================== */
+
+$.getJSON("jobs.php", {...filterOptions, lat: latlng.lat, long: latlng.lng}, function(data) {
+      jobs = L.geoJson(data,{
+        pointToLayer: function(feature,loc){
+          return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+        },
+        onEachFeature: onEachFeature
+      }).addTo(map);
+    });
+  }
+
 
 
 /*=====================
@@ -187,11 +210,22 @@ var map = L.map('map', {
   zoom: 3
 });
 
+
 /*=====================
 
 Infowindow
 
 ===================== */
+//
+// map.on('click', function(e) {
+//       var popLocation= e.latlng;
+//       console.log(popLocation);
+//
+//   });
+
+  // .setLatLng(popLocation)
+  // .setContent('<p>Hello world!<br />This is a nice popup.</p>')
+  // .openOn(map);
 
 // cartodb.createLayer(map, '"https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&q=', {
 //     query: 'SELECT * FROM pennjobsdatatable20160418 ORDER BY post_date DESC'

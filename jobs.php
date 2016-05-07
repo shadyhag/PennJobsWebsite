@@ -3,9 +3,10 @@ header('Content-Type: application/json');
 error_reporting(0);
 define('BASE_URL', "https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&api_key=f816e999bf9b5e7d7a5352138f2f23007fc184d4");
 
-function getJobs($types, $exclude_experience_levels,$concentrations){
+function getJobs($types, $exclude_experience_levels,$concentrations, $lat, $long){
   $sql = "SELECT * FROM pennjobsdatatable20160418";
   $wheres = [];
+
 
   //
   if (!empty($concentrations) && $concentrations !== "All") {
@@ -33,5 +34,5 @@ function getJobs($types, $exclude_experience_levels,$concentrations){
   return file_get_contents($url);
 }
 
-$job_json = getJobs($_GET["not_types"], $_GET["not_experience"], $_GET["concz"]);
+$job_json = getJobs($_GET["not_types"], $_GET["not_experience"], $_GET["concz"], $_GET["lat"], $_GET["long"]);
 print($job_json);
