@@ -58,18 +58,17 @@ var filterOptions = {
 /*=====================
 MARKER STUFF
 ===================== */
-
-$.getJSON("jobs.php", {...filterOptions, lat: latlng.lat, long: latlng.lng}, function(data) {
-      jobs = L.geoJson(data,{
-        pointToLayer: function(feature,loc){
-          return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
-        },
-        onEachFeature: onEachFeature
-      }).addTo(map);
-    });
-  }
-
-
+function nearJobsInfo(latlng){
+  var opts = {not_types: filterOptions.types, not_experience: latlng.not_experience, concz: latlng.concz};
+  $.getJSON("jobs.php", {...filterOptions, lat: latlng.lat, long: latlng.lng}, function(data) {
+    jobs = L.geoJson(data,{
+      pointToLayer: function(feature,loc){
+        return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
+      },  
+      onEachFeature: onEachFeature
+    }).addTo(map);
+  }); 
+}
 
 /*=====================
 CHECKBOX STUFF
