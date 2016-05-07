@@ -59,8 +59,15 @@ var filterOptions = {
 MARKER STUFF
 ===================== */
 function nearJobsInfo(latlng){
-  var opts = {not_types: filterOptions.types, not_experience: latlng.not_experience, concz: latlng.concz};
-  $.getJSON("jobs.php", {...filterOptions, lat: latlng.lat, long: latlng.lng}, function(data) {
+  var opts = {
+    not_types: filterOptions.types,
+    not_experience: filterOptions.not_experience,
+    concz: filterOptions.concz,
+    lat: latlng.lat,
+    long: latlng.lng
+  };
+
+  $.get("jobs.php", opts, function(data) {
     jobs = L.geoJson(data,{
       pointToLayer: function(feature,loc){
         return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
