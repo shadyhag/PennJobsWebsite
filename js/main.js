@@ -36,8 +36,7 @@ window.onload = function() {
         onEachFeature: onEachFeature
       }).addTo(map);
 
-    },
-    "application/json"
+    }
   );
 
   }
