@@ -88,7 +88,7 @@ $('input.filter-job_type:checkbox').click(function(){
     filterOptions.not_types.push(val);
   }else{
     filterOptions.not_types = filterOptions.not_types.filter(function(name) {
-      return name === val;
+      return name !== val;
     });
   }
   showJobs();
@@ -101,7 +101,7 @@ $('input.filter-experience:checkbox').click(function(){
     filterOptions.not_experience.push(val);
   }else{
     filterOptions.not_experience = filterOptions.not_experience.filter(function(name) {
-      return name === val;
+      return name !== val;
     });
   }
   showJobs();
