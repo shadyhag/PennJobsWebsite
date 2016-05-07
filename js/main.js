@@ -15,6 +15,41 @@ window.onload = function() {
   // Name of table is 'data_collector'
 
 
+  var filterOptions = {
+    not_types: [],
+    not_experience: [],
+    concz: []
+  };
+  var location= {};
+
+  /*=====================
+  MARKER STUFF
+  ===================== */
+
+  /*=====================
+
+  Infowindow
+
+  ===================== */
+
+  function nearJobsInfo(){
+    var opts = {
+      not_types: filterOptions.types,
+      not_experience: filterOptions.not_experience,
+      concz: filterOptions.concz,
+      city: location.city,
+      state: location.state
+    };
+    $(".drawer-body").empty();
+
+    $.get("jobdata.php", opts, function(data) {
+      console.log(data.rows);
+        $.each(data.rows, function(){$('.drawer-body').append("<div>"+this.job_title+"<div>");});
+    });
+  }
+
+
+
   /*=====================
 
   LOAD MAP WITH ALL JOBS
@@ -33,11 +68,12 @@ window.onload = function() {
           var marker = L.circleMarker(loc, cityMarkerOptions);
           marker.on('click', function(e) {
             console.log(feature.properties.city1, feature.properties.state1);
-            nearJobsInfo({city: feature.properties.city1, state: feature.properties.state1});
+            location = {city: feature.properties.city1, state: feature.properties.state1};
+            nearJobsInfo();
             $("#drawerExample").drawer("show");
             $(".drawer-title").empty();
             $(".drawer-title").text("Opportunities in "+feature.properties.city1+", "+ feature.properties.state1);
-            $(".drawer-body").empty();
+
           });
           return marker;
         },
@@ -45,40 +81,12 @@ window.onload = function() {
       }).addTo(map);
     }
   );
+  if (location.city && location.state)  {
+    nearJobsInfo();
+  }
 }
 
 $(showJobs);
-
-var filterOptions = {
-  not_types: [],
-  not_experience: [],
-  concz: []
-};
-
-/*=====================
-MARKER STUFF
-===================== */
-function nearJobsInfo(location){
-  var opts = {
-    not_types: filterOptions.types,
-    not_experience: filterOptions.not_experience,
-    concz: filterOptions.concz,
-    city: location.city,
-    state: location.state
-  };
-
-  $.get("jobdata.php", opts, function(data) {
-    console.log(data.rows);
-      $.each(data.rows, function(){$('.drawer-body').append("<div>"+this.job_title+"<div>");});
-  });
-}
-
-// jobs = L.geoJson(data,{
-//   pointToLayer: function(feature,loc){
-//     return L.circleMarker(loc, cityMarkerOptions).bindPopup('<p><b>' + feature.properties.name + '</b><br /><em>' + feature.properties.address + '</em></p>');
-//   },
-//   onEachFeature: onEachFeature
-// }).addTo(map);
 
 
 /*=====================
@@ -220,66 +228,6 @@ var map = L.map('map', {
   zoom: 3
 });
 
-
-/*=====================
-
-Infowindow
-
-===================== */
-//
-// map.on('click', function(e) {
-//       var popLocation= e.latlng;
-//       console.log(popLocation);
-//
-//   });
-
-// .setLatLng(popLocation)
-// .setContent('<p>Hello world!<br />This is a nice popup.</p>')
-// .openOn(map);
-
-// cartodb.createLayer(map, '"https://shayda.cartodb.com/api/v2/sql?format=GeoJSON&q=', {
-//     query: 'SELECT * FROM pennjobsdatatable20160418 ORDER BY post_date DESC'
-//
-//   })
-//     .on('done', function(layer) {
-//
-//       map.overlayMapTypes.setAt(1, layer);
-//       var sublayer = layer.getSubLayer(0);
-//       sublayer.setCartoCSS(systemcartoCSS);
-//
-//       layers.SystemLyr = sublayer;
-//       var infowindow = sublayer.infowindow;
-//
-//       infowindow.set('template', function(data) {
-//
-//         var clickPosLatLng = this.model.get('latlng');
-//         var fields = this.model.get('content').fields;
-//
-//         if (fields && fields[0].type !== 'loading') {
-//
-//           var obj = _.find(fields, function(obj) {
-//             return obj.title == 'kml_key';
-//           }).value;
-//
-//           callinfowindow(clickPosLatLng, obj);
-//
-//         }
-//       }); // end infowindow set
-//
-//     }); // end on.done for the water systems
-// // for storing sublayer outside of createlayer
-// var sublayers;
-//
-// // // Add data layer to your map
-// // cartodb.createLayer(map,layerSource)
-// //     .addTo(map)
-// //     .done(function(layer) {
-// //         sublayer = layer.getSubLayer(0);
-// //         createSelector(sublayer);
-// //     })
-// //     .error(function(err) {
-// //         console.log("error: " + err);
-// //     });
 
 var Stamen_TonerLite = L.tileLayer('http://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}.png', {
   attribution: 'Map tiles by <State`="http://stamen.com">Stamen Design</a>, <a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a> &mdash; Map data &copy; <a href="http://www.openstreetmap.org/copyright">OpenStreetMap</a>',
