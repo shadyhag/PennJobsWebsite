@@ -64,12 +64,18 @@ window.onload = function() {
           marker.on('click', function(e) {
             console.log(feature.properties.city1, feature.properties.state1);
             location = {city: feature.properties.city1, state: feature.properties.state1};
+            var lat = e.latlng.lat;
+            var lng = (e.latlng.lng);
+            var leftlong = lng + 50;
+            console.log(leftlong);
+            var newLatLng = new L.LatLng(lat,leftlong);
+            map.setView(newLatLng);
             nearJobsInfo();
             $("#drawerExample").drawer("show");
             $(".drawer-title").empty();
             $(".drawer-title").text("Opportunities in "+feature.properties.city1+", "+ feature.properties.state1);
 
-          });
+          }).bindPopup(feature.properties.city1+", " +feature.properties.state1);
           return marker;
         },
         onEachFeature: onEachFeature
