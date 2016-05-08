@@ -16,6 +16,10 @@ body{
   top:0;
 }
 
+.checkbox, .radio{
+  margin-left: -19px;
+}
+
 #drawerExample .drawer-contents{
   background-color:#f6f1ed
 }
@@ -165,13 +169,55 @@ ul.dropdown-menu.scrollable-menu, ul.dropdown-menu.scrollable-menu1 {
   font-weight:bold;
   font-size: 20px;
 }
+a:hover {
+  color:#16174f;
+  display:inline;
+}
 
+a {
+  color:grey;
+}
+.jobtitle{
+  color:#963019;
+  font-weight:normal;
+  font-family: Futura, 'Trebuchet MS', Arial, sans-serif;
+  font-weight:bold;
+  font-size: 18px;
+}
+
+hr{
+  border-top: 1px solid #DDD;
+
+}
 
 .main{
   color:#667467;
   text-align:justify;
 }
+.maintext{
+  color:#667467;
+  text-align:justify;
+  display: inline;
+}
+.company{
+  color: #16174f;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: italic;
+}
+.mainlabel{
+  color:#963019;
+  text-align:justify;
+  font-weight:bold;
+  display:inline;
+}
 
+.salary{
+  color:grey;
+  display: inline-block;
+  padding-bottom: -10px;
+  font-weight: bold;
+}
 
 #addressFrom{
   width:100%

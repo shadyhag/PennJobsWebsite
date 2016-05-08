@@ -41,13 +41,31 @@ window.onload = function() {
 
     $.get("jobdata.php", opts, function(data) {
       console.log(data.rows);
-        $.each(data.rows, function(){$('.drawer-body').append("<div>"+this.job_title+"<div>");});
+        $.each(data.rows, function(){$('.drawer-body').append(
+          "<div class=jobtitle>"+this.job_title+"</div>"+
+          "<div class=company>"+this.firm_name+"</div>"+
+          "<p class=salary>"+this.paid+" "+this.job_type+" "+this.salary+" "+"</p>"+
+          "<div><p class = main>"+this.description+"</p></div>"+
+          "<div><p class=mainlabel>US Citizenship required: </p><p class=maintext>"+this.us_citizen_required+"</p></div>"+
+          "<div><p class=mainlabel>Website: <a href="+this.link+">"+this.link+"</a></p></div>"+
+          "<div><p class=mainlabel>Contact Information: </p><p class=maintext>"+this.contact_name+" <a href="+this.contact_email+">"+this.contact_email+" "+this.contact_phone+"</a></p></div>"+
+          "<div><p class=mainlabel>Source: </p><p class=maintext>"+this.sourcea3+" - "+this.sourcea2+"</p></div>"+
+          "<div><p class=mainlabel>Posted: </p><p class=maintext>"+this.post_date+"</p></div>"+
+          
+          "<hr>"
+
+
+
+
+
+
+        );});
     });
   }
 
 
   /*=====================
-
+"<div><p class=mainlabel>Job Type: </p><p class = maintext>"+
   LOAD MAP WITH ALL JOBS
 
   ===================== */
@@ -66,14 +84,15 @@ window.onload = function() {
             location = {city: feature.properties.city1, state: feature.properties.state1};
             var lat = e.latlng.lat;
             var lng = (e.latlng.lng);
-            var leftlong = lng + 50;
+            var leftlong = lng+3;
+            var botlat = lat-2;
             console.log(leftlong);
-            var newLatLng = new L.LatLng(lat,leftlong);
-            map.setView(newLatLng);
+            var newLatLng = new L.LatLng(botlat,leftlong);
+            map.setView(newLatLng,6);
             nearJobsInfo();
             $("#drawerExample").drawer("show");
             $(".drawer-title").empty();
-            $(".drawer-title").text("Opportunities in "+feature.properties.city1+", "+ feature.properties.state1);
+            $(".drawer-title").text("Opportunities in "+feature.properties.city1+", "+ feature.properties.state1+ " "+feature.properties.country1);
 
           }).bindPopup(feature.properties.city1+", " +feature.properties.state1);
           return marker;
